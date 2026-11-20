@@ -5,7 +5,7 @@ public class main {
     public static void main(String[] args) {
         int[] numbers = {10, 20, 30, 40, 50};
         System.out.println("Массив:");
-        System.out.println(numbers[0] + ", " + numbers[1] + ", " + numbers[2] + ", " + numbers[3] + ", " + numbers[4]);
+        System.out.println(numbers.length);
 
         Scanner scanner = new Scanner(System.in);
 
@@ -17,14 +17,11 @@ public class main {
         else if (choice == 1) {
             System.out.print("Введите число для добавления: ");
             int newNum = scanner.nextInt();
-            int[] newNumbers = new int[6];
-            newNumbers[0] = numbers[0];
-            newNumbers[1] = numbers[1];
-            newNumbers[2] = numbers[2];
-            newNumbers[3] = numbers[3];
-            newNumbers[4] = numbers[4];
-            newNumbers[5] = newNum;
-            System.out.println(newNumbers[0] + ", " + newNumbers[1] + ", " + newNumbers[2] + ", " + newNumbers[3] + ", " + newNumbers[4] + ", " + newNumbers[5]);
+            int[] newNumbers = new int[numbers.length + 1];
+            for (int i = 0; i < numbers.length; i++) {
+                newNumbers[i] = numbers[i];
+                numbers.add(newNum);
+            System.out.println(numbers);
         }
         else {
             System.out.print("Введите индекс от 0 до 4 для удаления: ");
@@ -32,11 +29,10 @@ public class main {
             if (index < 0 || index > 4) {
                 System.out.println("Ошибка");
             } else {
-                System.out.println("Новый массив после удаления:");
-
-                for (int i = 0; i < 5; i++) {
-                    if (i != index) {
-                        System.out.print(numbers[i] + " ");
+               for (int i = 0; i < numbers.size(); i++) {
+                    if (i == index) {
+                        numbers.remove(i);
+              System.out.println( + numbers);
                     }
                 }
             }
@@ -62,7 +58,7 @@ public class dasd {
         int maxAttempts = 10;
         int attempts = 0;
 
-        System.out.println("Я загадал число от 1 до 100. Попробуй угадать его за 10 попыток!");
+        System.out.println("Я загадал число от 1 до 100.");
 
         while (attempts < maxAttempts) {
             System.out.print("Введите ваше предположение: ");
@@ -90,7 +86,7 @@ public class dasd {
         }
 
 
-        System.out.println("Вы исчерпали все попытки. Загаданное число было " + secretNumber);
+        System.out.println("Загаданное число было: " + secretNumber);
         scanner.close();
     }
 }
