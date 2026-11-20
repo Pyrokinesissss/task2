@@ -26,7 +26,7 @@ public class main {
         else {
             System.out.print("Введите индекс от 0 до 4 для удаления: ");
             int index = scanner.nextInt();
-            if (index < 0 || index > 4) {
+            if (index < 0 || index > numbers.size) {
                 System.out.println("Ошибка");
             } else {
                for (int i = 0; i < numbers.size(); i++) {
