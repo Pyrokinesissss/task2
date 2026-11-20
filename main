@@ -1,40 +1,51 @@
-import java.util.Array;
+import java.util.Arrays;
 import java.util.Scanner;
 
-public class main {
+public class Main {
     public static void main(String[] args) {
         int[] numbers = {10, 20, 30, 40, 50};
-        System.out.println("Массив:");
-        System.out.println(numbers.length);
+
+        System.out.println(Arrays.toString(numbers));
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Выбор: (1 добавить, 2 удалить): ");
+        System.out.print("1 добавить, 2 удалить: ");
         int choice = scanner.nextInt();
+
         if (choice != 1 && choice != 2) {
             System.out.println("Неверный выбор. Введите 1 или 2");
         }
         else if (choice == 1) {
             System.out.print("Введите число для добавления: ");
             int newNum = scanner.nextInt();
+
             int[] newNumbers = new int[numbers.length + 1];
             for (int i = 0; i < numbers.length; i++) {
                 newNumbers[i] = numbers[i];
-                numbers.add(newNum);
-            System.out.println(numbers);
+            }
+            newNumbers[newNumbers.length - 1] = newNum;
+            numbers = newNumbers;
+
+            System.out.println(Arrays.toString(numbers));
         }
         else {
-            System.out.print("Введите индекс от 0 до 4 для удаления: ");
+            System.out.print("Введите индекс от 0 до " + (numbers.length - 1));
             int index = scanner.nextInt();
-            if (index < 0 || index > numbers.size) {
+
+            if (index < 0 || index >= numbers.length) {
                 System.out.println("Ошибка");
             } else {
-               for (int i = 0; i < numbers.size(); i++) {
-                    if (i == index) {
-                        numbers.remove(i);
-              System.out.println(numbers);
+                int[] newNumbers = new int[numbers.length - 1];
+                int j = 0;
+                for (int i = 0; i < numbers.length; i++) {
+                    if (i != index) {
+                        newNumbers[j] = numbers[i];
+                        j++;
                     }
                 }
+                numbers = newNumbers;
+
+                System.out.println(Arrays.toString(numbers));
             }
         }
 
